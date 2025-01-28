@@ -1,0 +1,15 @@
+{
+    "sections": {
+        "main": {
+            "type": "template-blog",
+            "settings": {
+                "number_of_blog_posts": 3,
+                "padding_top": 36,
+                "padding_bottom": 36
+            }
+        }
+    },
+    "order": [
+        "main"
+    ]
+}
