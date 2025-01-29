@@ -1,5 +1,11 @@
 {% assign main_menu_linklist = linklists[section.settings.menu].links %}
-<div class="relative bg-white" x-data="{ mobileMenuOpen: true }">
+<div class="relative bg-white" x-data="{ 
+  mobileMenuOpen: false,
+  {% for link in main_menu_linklist %}
+    {% assign link_handle = link.handle | replace: '-', '_' %}
+    {{ link_handle }}: false,
+  {% endfor %}
+}">
   <div class="mx-auto px-4 sm:px-6">
     <div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
       <!-- STORE NAME / STORE LOGO -->
@@ -17,7 +23,7 @@
       </div>
 
       <!-- NAVIGATION MENU -->
-      <nav x-data="{ open: false }" class="hidden md:flex space-x-10">
+      <nav class="hidden md:flex space-x-10">
         {% for link in main_menu_linklist %}
           {% assign link_handle = link.handle | replace: '-', '_' %}
           {% if link.links != blank %}
@@ -32,8 +38,8 @@
               </button>
 
               <div
-                x-show="open"
-                @click.away="open = false"
+                x-show="{{ link_handle }}"
+                @click.away="{{ link_handle }} = false"
                 class="absolute z-10 -ml-5 mt-5 transform px-2 w-screen max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2"
               >
                 <div class="shadow-lg border ring-black ring-opacity-5 overflow-hidden rounded-lg">
