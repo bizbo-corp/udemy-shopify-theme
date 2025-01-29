@@ -1,19 +1,18 @@
-{% paginate collection.products by 12 %}
-    {% for product in collection.products %}
-        {% if product.featured_image %}
-            <img src="{{ product.featured_image | image_url: width: 300 }}" alt="{{ product.title }}" width="300" height="300">
-        {% endif %}
-        <span>{{ product.vendor }}</span>
-        <a href="{{ product.url }}">
-            <h1>{{ product.title }}</h1>
-        </a>
-        <span>{{ product.price | money }}</span>
-
-
+<div class="px-4 py-8">
+  {% paginate collection.products by 12 %}
+    <h1 class="text-3xl text-center">{{ collection.title }}</h1>
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {% for product in collection.products %}
+          {% render 'product-card', product_product: product %}
         {% else %}
-            <div class="text-center">
-                <p>No products found</p>
-            </div>
-    {% endfor %}
+          <div class="text-center">
+            <p>No products found</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
     {% render 'pagination', pagination: paginate %}
-{% endpaginate %}
+  {% endpaginate %}
+</div>
