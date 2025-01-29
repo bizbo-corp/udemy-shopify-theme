@@ -16,7 +16,9 @@
                 {% endif %}
               </a>
                 <div class="flex flex-col p-4">
-                    <span class="text-sm text-gray-400">{{ product_product.vendor }}</span>
+                    {% if section.settings.show_vendor %}
+                        <span class="text-sm text-gray-400">{{ product_product.vendor }}</span>
+                    {% endif %}
                     <a href="{{ product_product.url }}" class="text-gray-700 uppercase font-medium block mt-1">
                 <h1 class="text-xl font-m edium">{{ product_product.title }}</h1>
               </a>
