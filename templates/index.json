@@ -13,8 +13,8 @@
       "type": "featured-collection",
       "settings": {
         "title": "Featured Collection",
-        "featured_collection": "",
-        "number_of_products_to_show": 9
+        "featured_collection": "frontpage",
+        "number_of_products_to_show": 12
       }
     }
   },
