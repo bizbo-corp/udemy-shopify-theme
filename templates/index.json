@@ -16,9 +16,14 @@
         "featured_collection": "frontpage",
         "number_of_products_to_show": 12
       }
+    },
+    "contact_form_Y3hyzB": {
+      "type": "contact-form",
+      "settings": {}
     }
   },
   "order": [
-    "featured-collection"
+    "featured-collection",
+    "contact_form_Y3hyzB"
   ]
 }
