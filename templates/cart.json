@@ -1,19 +1,26 @@
 {
     "sections": {
-        "template": {
+        "main-cart": {
             "type": "template-cart",
             "blocks": {
                 "subtotal": {
-                    "type": "subtotal"
+                    "type": "subtotal",
+                    "settings": {}
                 },
                 "update-button": {
-                    "type": "update_button"
+                    "type": "update",
+                    "settings": {}
                 },
                 "checkout-button": {
-                    "type": "checkout_button"
+                    "type": "checkout",
+                    "settings": {}
                 }
             },
-            "block_order": ["subtotal", "update-button", "checkout-button"]
+            "block_order": ["subtotal", "update-button", "checkout-button"],
+            "settings": {}
         }
-    }
+    },
+    "order": [
+        "main-cart"
+    ]
 }

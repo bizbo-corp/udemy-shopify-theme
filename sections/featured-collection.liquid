@@ -1,14 +1,13 @@
-<div class="flex flex-col items-center my-8">
-  <h1 class="text-center text-3xl font-bold">{{ section.settings.title }}</h1>
-  <div class="max-w-6xl mx-auto">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-      {% for product in section.settings.featured_collection.products limit: section.settings.number_of_products_to_show %}
-        {% render 'product-card', product_product: product %}
-      {% else %}
-        {% for item (1..4) %}
-            {% render 'product-card-placeholder' %}
-          {% comment %} {% render 'product-card-placeholder' %} {% endcomment %}
-        {% endfor %}
+<div class="section-{{ section.id }}-padding">
+  <div class="page-width">
+    {% if section.settings.title != blank %}
+      <h2 class="text-center mb-4">{{ section.settings.title }}</h2>
+    {% endif %}
+    
+    {% assign collection = collections[section.settings.collection] %}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      {% for product in collection.products limit: section.settings.products_to_show %}
+        {% render 'product-card', product: product %}
       {% endfor %}
     </div>
   </div>
@@ -21,21 +20,22 @@
     {
       "type": "text",
       "id": "title",
-      "default": "Featured Collection",
-      "label": "Title"
+      "label": "Title",
+      "default": "Featured Collection"
     },
     {
       "type": "collection",
-      "id": "featured_collection",
+      "id": "collection",
       "label": "Collection"
     },
     {
       "type": "range",
-      "id": "number_of_products_to_show",
-      "label": "Products to show",
-      "default": 4,
+      "id": "products_to_show",
       "min": 4,
-      "max": 12
+      "max": 12,
+      "step": 4,
+      "default": 4,
+      "label": "Products to show"
     }
   ],
   "presets": [
